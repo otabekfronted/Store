@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* HTML: <div class="loader"></div> */
+.wrapper-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Butun ekran bo'ylab markazlashtirish */
+    background: rgba(
+        175,
+        175,
+        175,
+        0.5
+    ); /* Shaffof qizil fon (firebrickning shaffof versiyasi) */
+    backdrop-filter: blur(5px); /* Fonni bulg'ash efekti */
+    position: fixed; /* Ekranda qattiq joylashish */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.loader {
+    width: 65px;
+    aspect-ratio: 1;
+    position: relative;
+    /* background-color: black; */
+}
+.loader:before,
+.loader:after {
+    content: "";
+    position: absolute;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px inset #fff;
+    animation: l5 2.5s infinite;
+}
+.loader:after {
+    animation-delay: -1.25s;
+    border-radius: 0;
+}
+@keyframes l5 {
+    0% {
+        inset: 0 35px 35px 0;
+    }
+    12.5% {
+        inset: 0 35px 0 0;
+    }
+    25% {
+        inset: 35px 35px 0 0;
+    }
+    37.5% {
+        inset: 35px 0 0 0;
+    }
+    50% {
+        inset: 35px 0 0 35px;
+    }
+    62.5% {
+        inset: 0 0 0 35px;
+    }
+    75% {
+        inset: 0 0 35px 35px;
+    }
+    87.5% {
+        inset: 0 0 35px 0;
+    }
+    100% {
+        inset: 0 35px 35px 0;
+    }
+}
+
+.card {
+    width: 286px;
+    height: 180px;
+    display: flex;
+}
