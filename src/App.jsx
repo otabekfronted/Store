@@ -6,7 +6,7 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosClient("countries")
+        axiosClient("/countries")
             .then((data) => {
                 console.log(data.data.data);
                 setCountries(data.data.data);
