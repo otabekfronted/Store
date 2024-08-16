@@ -6,14 +6,15 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosClient("/countries")
+        axiosClient
+            .get("/countries")
             .then((data) => {
                 console.log(data.data.data);
                 setCountries(data.data.data);
                 setLoading(false);
             })
             .catch((error) => {
-                alert(error.message);
+                console.log(error.message);
                 setLoading(false);
             });
     }, []);
