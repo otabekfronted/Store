@@ -6,7 +6,7 @@ function App() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axiosClient("/countries")
+        axiosClient("countries")
             .then((data) => {
                 console.log(data.data.data);
                 setCountries(data.data.data);
@@ -20,36 +20,45 @@ function App() {
 
     if (loading)
         return (
-            <div className="wrapper-loader">
+            <div className="flex justify-center items-center h-screen">
                 <div className="loader"></div>
             </div>
         );
-    // if (error) return <div>Error: {error.message}</div>;
 
     return (
-        <>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
             {countries &&
                 countries.map((country) => (
-                    <div className="card" key={country.name}>
-                        <img
-                            className="card-img-top"
-                            src={country.imageUrl}
-                            alt={country.name}
-                        />
-                        <div className="card-body">
-                            <h1 className="card-title">{country.name}</h1>
-                            <p className="card-text">
+                    <div
+                        className="bg-white rounded-lg shadow-lg overflow-hidden"
+                        key={country.name}
+                    >
+                        <figure>
+                            <img
+                                src={country.imageUrl}
+                                alt={country.name}
+                                className="w-full h-48 object-cover"
+                            />
+                        </figure>
+                        <div className="p-4">
+                            <h2 className="text-xl font-semibold mb-2">
+                                {country.name}
+                            </h2>
+                            <p className="text-gray-600 mb-2">
                                 Capital: {country.capital}
                             </p>
-                            <p>
-                                Population:{" "}
-                                {country.population.toLocaleString()}
+                            <p className="text-gray-600">
+                                Population: {country.population}
                             </p>
-                            <p>Area: {country.area.toLocaleString()} km²</p>
+                            <div className="mt-4">
+                                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                                    Buy Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 ))}
-        </>
+        </div>
     );
 }
 
