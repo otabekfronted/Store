@@ -13,7 +13,7 @@ function App() {
                 setLoading(false);
             })
             .catch((error) => {
-                console.log(error);
+                alert(error.message);
                 setLoading(false);
             });
     }, []);
